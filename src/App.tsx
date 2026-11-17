@@ -1,85 +1,122 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { LanguageProvider, useTranslation } from './context/LanguageContext';
 import { HeaderHUD } from './components/HeaderHUD';
 import { BottomDock } from './components/BottomDock';
 import { AboutModal } from './components/AboutModal';
-import { Mountain, Compass, Sparkles } from 'lucide-react';
+import { LayerSwitcher, type MapStyleMode } from './components/LayerSwitcher';
+import { IntroOverlay } from './components/IntroOverlay';
+import { Map3D } from './components/Map3D';
+import { type QualityMode, GUIDED_TOUR_STOPS } from './config/mapConfig';
 
 const MainShell: React.FC = () => {
-  const { t, language } = useTranslation();
+  const { language } = useTranslation();
+  
+  // Modals & Panels
   const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [is3D, setIs3D] = useState(true);
+  const [isLayersOpen, setIsLayersOpen] = useState(false);
 
-  // Dismiss instant splash screen once React shell mounts
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (typeof (window as any).dismissSplash === 'function') {
-        (window as any).dismissSplash();
-      }
-    }, 400);
-    return () => clearTimeout(timer);
+  // Map settings
+  const [currentStyle, setCurrentStyle] = useState<MapStyleMode>('satellite');
+  const [exaggeration, setExaggeration] = useState<number>(1.3);
+  const [quality, setQuality] = useState<QualityMode>('high');
+  const [is3D, setIs3D] = useState(true);
+  const [currentAltitude, setCurrentAltitude] = useState<number>(1400);
+
+  // Intro & Tour states
+  const [isIntroPlaying, setIsIntroPlaying] = useState(true);
+  const [isTouring, setIsTouring] = useState(false);
+  const [currentTourStopIndex, setCurrentTourStopIndex] = useState(0);
+
+  // Dismiss splash screen once map loads
+  const handleMapLoaded = useCallback(() => {
+    if (typeof (window as any).dismissSplash === 'function') {
+      (window as any).dismissSplash();
+    }
   }, []);
 
+  const handleSkipIntro = useCallback(() => {
+    (window as any).__terranep_map?.skipIntro();
+    setIsIntroPlaying(false);
+  }, []);
+
+  const handleResetView = useCallback(() => {
+    (window as any).__terranep_map?.resetView();
+  }, []);
+
+  const handleStartTour = useCallback(() => {
+    if (isTouring) {
+      setIsTouring(false);
+    } else {
+      setIsIntroPlaying(false);
+      setCurrentTourStopIndex(0);
+      setIsTouring(true);
+    }
+  }, [isTouring]);
+
+  const handleStopTour = useCallback(() => {
+    setIsTouring(false);
+  }, []);
+
+  const currentTourStop = GUIDED_TOUR_STOPS[currentTourStopIndex];
+  const tourStopName = currentTourStop 
+    ? (language === 'ne' ? currentTourStop.name_ne : currentTourStop.name_en)
+    : undefined;
+
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-navy-900 select-none">
-      {/* Dynamic Background Preview (Map Canvas will be mounted here in Phase 2) */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-navy-800 via-navy-900 to-navy-950 flex flex-col items-center justify-center p-6 text-center">
-        {/* Subtle grid and mountain horizon backdrop */}
-        <div 
-          className="absolute inset-0 opacity-15 pointer-events-none"
-          style={{
-            backgroundImage: `radial-gradient(#3DD6F5 1px, transparent 1px), radial-gradient(#3DD6F5 1px, #0B1220 1px)`,
-            backgroundSize: '40px 40px',
-            backgroundPosition: '0 0, 20px 20px',
-          }}
-        />
+    <div className="relative w-screen h-screen overflow-hidden bg-navy-950 select-none">
+      {/* 3D Map Engine */}
+      <Map3D 
+        currentStyle={currentStyle}
+        exaggeration={exaggeration}
+        quality={quality}
+        is3D={is3D}
+        onMapLoaded={handleMapLoaded}
+        onAltitudeChange={setCurrentAltitude}
+        isIntroPlaying={isIntroPlaying}
+        onIntroEnd={() => setIsIntroPlaying(false)}
+        isTouring={isTouring}
+        onTourEnd={() => setIsTouring(false)}
+        currentTourStopIndex={currentTourStopIndex}
+        onTourStopChange={setCurrentTourStopIndex}
+      />
 
-        {/* Ambient Top Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-glow/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-md mx-auto space-y-4 animate-in fade-in zoom-in-95 duration-500">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-glow/10 border border-cyan-glow/30 text-cyan-glow text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Phase 1 Verified • Ready for 3D Map</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            {language === 'ne' ? 'टेरानेप' : 'TerraNep'}
-          </h2>
-
-          <p className="text-sm text-slate-300 leading-relaxed">
-            {t('tagline')}
-          </p>
-
-          <div className="pt-2 flex flex-wrap justify-center gap-2">
-            <span className="glass-panel-subtle px-3 py-1.5 rounded-xl text-xs text-cyan-glow border border-cyan-glow/20 flex items-center gap-1.5">
-              <Mountain className="w-3.5 h-3.5" />
-              AWS Terrarium DEM
-            </span>
-            <span className="glass-panel-subtle px-3 py-1.5 rounded-xl text-xs text-cyan-glow border border-cyan-glow/20 flex items-center gap-1.5">
-              <Compass className="w-3.5 h-3.5" />
-              Sentinel-2 Cloudless
-            </span>
-            <span className="glass-panel-subtle px-3 py-1.5 rounded-xl text-xs text-orange-400 border border-orange-500/20">
-              USGS Live Quakes
-            </span>
-          </div>
-        </div>
-      </div>
+      {/* Intro Skip & Active Tour Overlay */}
+      <IntroOverlay 
+        isIntroPlaying={isIntroPlaying}
+        onSkipIntro={handleSkipIntro}
+        isTouring={isTouring}
+        tourStopName={tourStopName}
+        onStopTour={handleStopTour}
+      />
 
       {/* Top HUD Header */}
       <HeaderHUD 
         onOpenAbout={() => setIsAboutOpen(true)}
         quakeCount={0}
+        currentAltitude={currentAltitude}
       />
 
       {/* Bottom Floating Control Dock */}
       <BottomDock 
         is3D={is3D}
-        onToggle3D={() => setIs3D(!is3D)}
-        onResetView={() => {}}
-        onOpenLayers={() => {}}
-        onStartTour={() => {}}
+        onToggle3D={() => setIs3D((prev) => !prev)}
+        onResetView={handleResetView}
+        onOpenLayers={() => setIsLayersOpen(true)}
+        onStartTour={handleStartTour}
+        onMyLocation={() => {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              (pos) => {
+                (window as any).__terranep_map?.flyToLocation(
+                  [pos.coords.longitude, pos.coords.latitude], 
+                  12
+                );
+              },
+              () => {},
+              { enableHighAccuracy: true }
+            );
+          }
+        }}
         onToggleFullscreen={() => {
           if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen().catch(() => {});
@@ -87,6 +124,19 @@ const MainShell: React.FC = () => {
             document.exitFullscreen().catch(() => {});
           }
         }}
+        isTouring={isTouring}
+      />
+
+      {/* Layer Switcher & Visual Controls Drawer */}
+      <LayerSwitcher 
+        isOpen={isLayersOpen}
+        onClose={() => setIsLayersOpen(false)}
+        currentStyle={currentStyle}
+        onSelectStyle={setCurrentStyle}
+        exaggeration={exaggeration}
+        onChangeExaggeration={setExaggeration}
+        quality={quality}
+        onChangeQuality={setQuality}
       />
 
       {/* About & License Modal */}

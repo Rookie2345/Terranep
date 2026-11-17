@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "lucide-react": "^1.74.0",
+    "maplibre-gl": "^6.19.0",
     "nepali-date-converter": "^3.4.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
