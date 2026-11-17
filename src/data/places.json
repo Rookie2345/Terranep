@@ -1,0 +1,146 @@
+[
+  {
+    "id": "everest",
+    "name_en": "Mount Everest (Sagarmatha)",
+    "name_ne": "सगरमाथा",
+    "category": "mountain",
+    "lat": 27.9881,
+    "lon": 86.9250,
+    "elevation": 8848.86,
+    "year_built": null,
+    "unesco": true,
+    "short_description_en": "The Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas.",
+    "short_description_ne": "विश्वको सर्वोच्च शिखर (८,८४८.८६ मिटर), जुन हिमालयको महालङ्गूर हिमश्रृङ्खलामा अवस्थित छ।",
+    "long_description_en": "Mount Everest is the highest mountain on Earth, attracting mountaineers from around the globe. Known in Nepali as Sagarmatha ('Goddess of the Sky') and in Tibetan as Chomolungma ('Holy Mother'), it stands proudly along the Nepal-China border inside Sagarmatha National Park, a UNESCO World Heritage Site.",
+    "long_description_ne": "सगरमाथा पृथ्वीको सबैभन्दा अग्लो हिमचुचुरो हो। यसलाई नेपालीमा सगरमाथा (आकाशकी देवी) र तिब्बतीमा चोमोलोङ्मा भनिन्छ। यो नेपाल र चीनको सीमानामा सगरमाथा राष्ट्रिय निकुञ्जभित्र अवस्थित छ र सन् १९७९ मा युनेस्को विश्व सम्पदा सूचीमा सूचीकृत भएको थियो।",
+    "images": [
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80"
+    ],
+    "model_url": null,
+    "sources": [
+      "Survey Department of Nepal & Ministry of Natural Resources China (2020 Elevation Measurement)",
+      "UNESCO World Heritage Center"
+    ],
+    "tags": ["mountain", "himalayas", "unesco", "8000m", "solukhumbu"]
+  },
+  {
+    "id": "pashupatinath",
+    "name_en": "Pashupatinath Temple",
+    "name_ne": "पशुपतिनाथ मन्दिर",
+    "category": "temple",
+    "lat": 27.7105,
+    "lon": 85.3487,
+    "elevation": 1330,
+    "year_built": 400,
+    "unesco": true,
+    "short_description_en": "One of the most sacred Hindu temple complexes dedicated to Lord Shiva, situated along the Bagmati River in Kathmandu.",
+    "short_description_ne": "काठमाडौंको पवित्र बागमती नदी किनारमा अवस्थित भगवान शिवको परम पावन हिन्दू तीर्थस्थल।",
+    "long_description_en": "Pashupatinath is one of the four most sacred Shiva sites in the world. The main temple is built in the Nepalese pagoda style of architecture with a gilded roof and four silver-plated doors. The entire complex houses 518 temples and ashrams.",
+    "long_description_ne": "पशुपतिनाथ विश्वभरिका हिन्दू धर्मावलम्बीहरूको आस्थाको केन्द्र हो। प्यागोडा शैलीमा निर्मित यो मन्दिरको छाना सुनको र चारै ढोका चाँदीका छन्। बागमती नदी किनारमा रहेको यस परिसरमा ५०० भन्दा बढी साना-ठूला मन्दिर र आश्रमहरू छन्।",
+    "images": [
+      "https://images.unsplash.com/photo-1582650625119-3a31f8418b7d?auto=format&fit=crop&w=800&q=80"
+    ],
+    "model_url": null,
+    "sources": [
+      "Pashupati Area Development Trust (PADT)",
+      "Department of Archaeology, Government of Nepal"
+    ],
+    "tags": ["temple", "shiva", "kathmandu", "unesco", "heritage"]
+  },
+  {
+    "id": "boudhanath",
+    "name_en": "Boudhanath Stupa",
+    "name_ne": "बौद्धनाथ स्तूप",
+    "category": "stupa",
+    "lat": 27.7215,
+    "lon": 85.3620,
+    "elevation": 1340,
+    "year_built": 600,
+    "unesco": true,
+    "short_description_en": "One of the largest spherical stupas in Nepal and the world, a central focal point of Tibetan Buddhism.",
+    "short_description_ne": "विश्वकै ठूला गोलाकार स्तूपहरू मध्ये एक, तिब्बती बौद्ध धर्मको प्रमुख पवित्र केन्द्र।",
+    "long_description_en": "Boudhanath's massive mandala makes it one of the largest spherical stupas in the world. Dominating the skyline with its serene Buddha eyes and cascading tiers, it has served as an ancient trade route resting place and spiritual sanctuary for centuries.",
+    "long_description_ne": "बौद्धनाथको विशाल मण्डला र शान्त बुद्धका आँखाले काठमाडौं उपत्यकालाई आध्यात्मिक शान्ति प्रदान गर्दछन्। प्राचीनकालदेखि नै तिब्बतसँगको व्यापारिक मार्गको मुख्य विश्रामस्थल रहेको यो स्तूप युनेस्को विश्व सम्पदा हो।",
+    "images": [
+      "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=800&q=80"
+    ],
+    "model_url": null,
+    "sources": [
+      "UNESCO Kathmandu Valley Heritage Site Record",
+      "Department of Archaeology Nepal"
+    ],
+    "tags": ["stupa", "buddhism", "unesco", "kathmandu", "mandala"]
+  },
+  {
+    "id": "swayambhunath",
+    "name_en": "Swayambhunath (Monkey Temple)",
+    "name_ne": "स्वयम्भूनाथ महाचैत्य",
+    "category": "stupa",
+    "lat": 27.7149,
+    "lon": 85.2904,
+    "elevation": 1420,
+    "year_built": 460,
+    "unesco": true,
+    "short_description_en": "Ancient religious complex atop a hill in Kathmandu Valley, revered by both Buddhists and Hindus.",
+    "short_description_ne": "काठमाडौं उपत्यकाको डाँडामा अवस्थित स्वयम्भू महाचैत्य, बौद्ध र हिन्दू दुवैको साझा आस्थाको केन्द्र।",
+    "long_description_en": "Perched on a hilltop west of Kathmandu, Swayambhunath occupies a central position in the origin mythology of the Kathmandu Valley, which was once a sacred lake according to the Swayambhu Purana. The site includes the central white stupa, Harati temple, and 365 stone steps.",
+    "long_description_ne": "काठमाडौं उपत्यकाको उत्पत्ति कथासँग जोडिएको स्वयम्भूनाथ उपत्यकाकै सबैभन्दा पुरानो धार्मिक स्थल मानिन्छ। स्वयम्भू पुराण अनुसार काठमाडौं दह हुँदा यहाँ पहिलोपटक कमलको फूलबाट ज्योति उत्पन्न भएको विश्वास गरिन्छ।",
+    "images": [
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80"
+    ],
+    "model_url": null,
+    "sources": [
+      "Swayambhu Management and Conservation Committee",
+      "UNESCO Kathmandu Valley List"
+    ],
+    "tags": ["stupa", "ancient", "unesco", "heritage", "kathmandu"]
+  },
+  {
+    "id": "lumbini",
+    "name_en": "Lumbini (Mayadevi Temple)",
+    "name_ne": "मायादेवी मन्दिर, लुम्बिनी",
+    "category": "heritage",
+    "lat": 27.4839,
+    "lon": 83.2760,
+    "elevation": 150,
+    "year_built": -623,
+    "unesco": true,
+    "short_description_en": "The sacred birthplace of Siddhartha Gautama (Lord Buddha), marked by the Ashoka Pillar and Mayadevi Temple.",
+    "short_description_ne": "भगवान गौतम बुद्धको पावन जन्मस्थल, जहाँ सम्राट अशोकको स्तम्भ र पवित्र पुष्करिणी पोखरी अवस्थित छ।",
+    "long_description_en": "Lumbini is the birthplace of the Buddha in 623 BC. The holy site features the Mayadevi Temple, the sacred Marker Stone documenting Buddha's exact birth spot, the Ashoka Pillar erected in 249 BC by Emperor Ashoka, and monastic zones representing nations from around the world.",
+    "long_description_ne": "लुम्बिनी भगवान बुद्धको जन्मस्थल हो। यहाँ ईसापूर्व २४९ मा सम्राट अशोकले स्थापना गरेको अशोक स्तम्भ, मायादेवी मन्दिर, पवित्र पुष्करिणी कुण्ड र विभिन्न देशका कलात्मक बौद्ध विहारहरू रहेका छन्। सन् १९९७ मा युनेस्को विश्व सम्पदा सूचीमा सूचीकृत।",
+    "images": [
+      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80"
+    ],
+    "model_url": null,
+    "sources": [
+      "Lumbini Development Trust",
+      "UNESCO World Heritage Committee Report"
+    ],
+    "tags": ["lumbini", "buddha", "birthplace", "unesco", "peace"]
+  },
+  {
+    "id": "phewa-lake",
+    "name_en": "Phewa Lake",
+    "name_ne": "फेवा ताल",
+    "category": "lake",
+    "lat": 28.2100,
+    "lon": 83.9550,
+    "elevation": 742,
+    "year_built": null,
+    "unesco": false,
+    "short_description_en": "A tranquil freshwater lake in Pokhara renowned for reflecting Mount Machapuchare and the Annapurna range.",
+    "short_description_ne": "पोखराको प्रख्यात रमणीय ताल, जहाँ माछापुच्छ्रे हिमालको सुन्दर छायाँ देखिन्छ।",
+    "long_description_en": "Phewa Lake is the second largest lake in Nepal. It is famous for the Tal Barahi Temple situated on an island in the lake and for offering mirror reflections of Machapuchare and Annapurna peaks on calm mornings. A major hub for boating and recreation in Pokhara.",
+    "long_description_ne": "फेवा ताल नेपालको दोस्रो ठूलो ताल हो। तालको बीच टापुमा ताल बाराही मन्दिर रहेको छ। शान्त बिहानीमा तालको पानीमा माछापुच्छ्रे र अन्नपूर्ण हिमालको प्रतिविम्ब देखिनु यसको मुख्य विशेषता हो।",
+    "images": [
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80"
+    ],
+    "model_url": null,
+    "sources": [
+      "National Lake Conservation Development Committee Nepal",
+      "Pokhara Tourism Council"
+    ],
+    "tags": ["lake", "pokhara", "machapuchare", "nature", "boating"]
+  }
+]

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from '../context/LanguageContext';
 import type { QualityMode } from '../config/mapConfig';
+import type { QuakeTimeFilter } from '../services/earthquakeService';
 import { 
   X, 
   Satellite, 
@@ -9,10 +10,21 @@ import {
   Sliders, 
   BatteryMedium, 
   Zap, 
-  Layers as LayersIcon 
+  Layers as LayersIcon,
+  Activity,
+  CloudSun,
+  MapPin,
+  Map as MapIcon
 } from 'lucide-react';
 
 export type MapStyleMode = 'satellite' | 'terrain' | 'dark';
+
+export interface ActiveLayersConfig {
+  earthquakes: boolean;
+  weather: boolean;
+  districts: boolean;
+  places: boolean;
+}
 
 interface LayerSwitcherProps {
   isOpen: boolean;
@@ -23,6 +35,10 @@ interface LayerSwitcherProps {
   onChangeExaggeration: (val: number) => void;
   quality: QualityMode;
   onChangeQuality: (q: QualityMode) => void;
+  activeLayers: ActiveLayersConfig;
+  onToggleLayer: (key: keyof ActiveLayersConfig) => void;
+  quakeFilter: QuakeTimeFilter;
+  onChangeQuakeFilter: (f: QuakeTimeFilter) => void;
 }
 
 export const LayerSwitcher: React.FC<LayerSwitcherProps> = ({
@@ -34,6 +50,10 @@ export const LayerSwitcher: React.FC<LayerSwitcherProps> = ({
   onChangeExaggeration,
   quality,
   onChangeQuality,
+  activeLayers,
+  onToggleLayer,
+  quakeFilter,
+  onChangeQuakeFilter,
 }) => {
   const { t } = useTranslation();
 
@@ -45,7 +65,7 @@ export const LayerSwitcher: React.FC<LayerSwitcherProps> = ({
       onClick={onClose}
     >
       <div 
-        className="w-full max-w-md glass-panel rounded-2xl p-5 shadow-glass border border-cyan-glow/20 space-y-5"
+        className="w-full max-w-md glass-panel rounded-2xl p-5 shadow-glass border border-cyan-glow/20 space-y-4 max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -112,6 +132,100 @@ export const LayerSwitcher: React.FC<LayerSwitcherProps> = ({
           </div>
         </div>
 
+        {/* Live Data Layer Toggles */}
+        <div className="space-y-2 pt-2 border-t border-white/10">
+          <label className="text-xs font-semibold text-slate-300">
+            Live Layers & Overlays
+          </label>
+          <div className="grid grid-cols-2 gap-2">
+            {/* Earthquakes */}
+            <button
+              onClick={() => onToggleLayer('earthquakes')}
+              className={`p-2.5 rounded-xl border flex items-center justify-between text-xs font-medium transition-all ${
+                activeLayers.earthquakes
+                  ? 'bg-orange-500/15 border-orange-500/40 text-orange-300'
+                  : 'bg-navy-850/60 border-white/10 text-slate-400'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <Activity className="w-4 h-4 text-orange-400" />
+                <span>{t('layers.earthquakes')}</span>
+              </span>
+              <span className={`w-2 h-2 rounded-full ${activeLayers.earthquakes ? 'bg-orange-400' : 'bg-slate-600'}`} />
+            </button>
+
+            {/* Weather */}
+            <button
+              onClick={() => onToggleLayer('weather')}
+              className={`p-2.5 rounded-xl border flex items-center justify-between text-xs font-medium transition-all ${
+                activeLayers.weather
+                  ? 'bg-amber-400/15 border-amber-400/40 text-amber-300'
+                  : 'bg-navy-850/60 border-white/10 text-slate-400'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <CloudSun className="w-4 h-4 text-amber-300" />
+                <span>{t('layers.weather')}</span>
+              </span>
+              <span className={`w-2 h-2 rounded-full ${activeLayers.weather ? 'bg-amber-300' : 'bg-slate-600'}`} />
+            </button>
+
+            {/* Districts */}
+            <button
+              onClick={() => onToggleLayer('districts')}
+              className={`p-2.5 rounded-xl border flex items-center justify-between text-xs font-medium transition-all ${
+                activeLayers.districts
+                  ? 'bg-cyan-glow/15 border-cyan-glow/40 text-cyan-glow'
+                  : 'bg-navy-850/60 border-white/10 text-slate-400'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <MapIcon className="w-4 h-4 text-cyan-glow" />
+                <span>{t('layers.districts')}</span>
+              </span>
+              <span className={`w-2 h-2 rounded-full ${activeLayers.districts ? 'bg-cyan-glow' : 'bg-slate-600'}`} />
+            </button>
+
+            {/* Places */}
+            <button
+              onClick={() => onToggleLayer('places')}
+              className={`p-2.5 rounded-xl border flex items-center justify-between text-xs font-medium transition-all ${
+                activeLayers.places
+                  ? 'bg-purple-500/15 border-purple-500/40 text-purple-300'
+                  : 'bg-navy-850/60 border-white/10 text-slate-400'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-purple-400" />
+                <span>{t('layers.places')}</span>
+              </span>
+              <span className={`w-2 h-2 rounded-full ${activeLayers.places ? 'bg-purple-400' : 'bg-slate-600'}`} />
+            </button>
+          </div>
+
+          {/* Quake Time Filter (if quakes active) */}
+          {activeLayers.earthquakes && (
+            <div className="pt-1.5 flex items-center justify-between text-xs">
+              <span className="text-[11px] text-slate-400">Quake Window:</span>
+              <div className="flex gap-1.5">
+                {(['24h', '7d', '30d'] as QuakeTimeFilter[]).map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => onChangeQuakeFilter(f)}
+                    className={`px-2 py-0.5 rounded-md text-[11px] font-semibold ${
+                      quakeFilter === f
+                        ? 'bg-orange-500 text-navy-950 font-bold'
+                        : 'bg-navy-850 text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
         {/* Terrain Exaggeration Slider */}
         <div className="space-y-2 pt-2 border-t border-white/10">
           <div className="flex items-center justify-between text-xs font-semibold">
@@ -133,13 +247,13 @@ export const LayerSwitcher: React.FC<LayerSwitcherProps> = ({
             className="w-full accent-cyan-glow bg-navy-950 h-1.5 rounded-lg appearance-none cursor-pointer"
           />
           <div className="flex justify-between text-[10px] text-slate-400 font-mono">
-            <span>1.0x (Realistic)</span>
-            <span>1.5x (Dramatic)</span>
-            <span>2.0x (Peak)</span>
+            <span>1.0x (Natural)</span>
+            <span>1.3x (Cinematic)</span>
+            <span>2.0x (Dramatized)</span>
           </div>
         </div>
 
-        {/* Performance & Quality Mode */}
+        {/* Quality Mode */}
         <div className="space-y-2 pt-2 border-t border-white/10">
           <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
             <Zap className="w-3.5 h-3.5 text-amber-400" />
@@ -165,11 +279,6 @@ export const LayerSwitcher: React.FC<LayerSwitcherProps> = ({
               </button>
             ))}
           </div>
-          <p className="text-[10px] text-slate-400 leading-tight">
-            {quality === 'low-power' 
-              ? 'Optimized for budget Android phones: reduces pitch, fog & tile memory.' 
-              : 'Full 3D rendering with atmospheric sky, distance fog and 85° pitch.'}
-          </p>
         </div>
       </div>
     </div>
