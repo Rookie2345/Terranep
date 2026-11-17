@@ -21,6 +21,8 @@ import {
   fetchAllStationsMetrics, 
   type StationLiveMetrics 
 } from './services/weatherService';
+import placesData from './data/places.json';
+import districtsData from './data/districts.json';
 
 const MainShell: React.FC = () => {
   const { language } = useTranslation();
@@ -79,6 +81,39 @@ const MainShell: React.FC = () => {
     const interval = setInterval(loadWeather, 10 * 60 * 1000); // 10m refresh
     return () => clearInterval(interval);
   }, []);
+
+  // Sync and restore place/district from URL Hash
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.includes('place=')) {
+      const pId = hash.split('place=')[1].split('&')[0];
+      const match = (placesData as PlaceItem[]).find((p) => p.id === pId);
+      if (match) {
+        setSelectedPlace(match);
+        setIsIntroPlaying(false);
+      }
+    } else if (hash.includes('district=')) {
+      const dId = parseInt(hash.split('district=')[1].split('&')[0], 10);
+      const match = (districtsData as any[]).find((d) => d.id === dId);
+      if (match) {
+        setSelectedDistrict(match);
+        setIsIntroPlaying(false);
+      }
+    }
+  }, []);
+
+  // Update hash when place/district is selected
+  useEffect(() => {
+    const currentHash = window.location.hash;
+    let baseLoc = currentHash.includes('loc=') ? currentHash.split('&')[0] : '#loc=84.3,27.8,7.2,65,-12';
+    if (selectedPlace) {
+      window.history.replaceState(null, '', `${baseLoc}&place=${selectedPlace.id}`);
+    } else if (selectedDistrict) {
+      window.history.replaceState(null, '', `${baseLoc}&district=${selectedDistrict.id}`);
+    } else {
+      window.history.replaceState(null, '', baseLoc);
+    }
+  }, [selectedPlace, selectedDistrict]);
 
   // Filtered quakes for map display
   const displayedQuakes = filterQuakesByTime(allQuakes, quakeFilter);
