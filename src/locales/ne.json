@@ -1,0 +1,100 @@
+{
+  "brand": "टेरानेप",
+  "brand_en": "TerraNep",
+  "tagline": "नेपालको ३D जीवन्त भू-दृश्य र प्रत्यक्ष जानकारी नक्सा",
+  "loading": "नक्सा खुल्दैछ...",
+  "skip_intro": "इन्ट्रो छोड्नुहोस्",
+  
+  "hud": {
+    "nepal_time": "नेपाल समय",
+    "altitude": "उचाइ",
+    "meters": "मिटर",
+    "live_quakes": "भूकम्प",
+    "last_updated": "अपडेट गरिएको"
+  },
+
+  "layers": {
+    "title": "तहहरू",
+    "map_style": "नक्सा शैली",
+    "satellite": "स्याटेलाइट (उपग्रह)",
+    "terrain": "भू-भाग (३D)",
+    "dark": "सिनेम्याटिक डार्क",
+    "earthquakes": "भूकम्प (३० दिन)",
+    "weather": "मौसम",
+    "air_quality": "वायु गुणस्तर (AQI)",
+    "districts": "जिल्ला सीमानाहरू",
+    "places": "ऐतिहासिक स्थलहरू"
+  },
+
+  "controls": {
+    "view_3d": "३D दृश्य",
+    "view_2d": "२D दृश्य",
+    "reset_view": "सुरुको दृश्य",
+    "my_location": "मेरो स्थान",
+    "fullscreen": "पूर्ण स्क्रिन",
+    "fly_tour": "नेपाल भ्रमण (Fly-through)",
+    "exaggeration": "उचाइ उभार (Terrain Exaggeration)",
+    "low_power": "कम पावर मोड (Low-power mode)",
+    "quality": "गुणस्तर"
+  },
+
+  "quakes": {
+    "title": "हालैका भूकम्पहरू",
+    "magnitude": "म्याग्निच्युड",
+    "depth": "गहिराइ",
+    "time": "समय",
+    "location": "स्थान",
+    "filter_all": "३० दिन",
+    "filter_7d": "७ दिन",
+    "filter_24h": "२४ घण्टा",
+    "no_quakes": "हालै कुनै ठूलो भूकम्प भेटिएन।"
+  },
+
+  "weather": {
+    "title": "प्रत्यक्ष मौसम",
+    "temperature": "तापक्रम",
+    "condition": "अवस्था",
+    "wind": "हावाको गति",
+    "humidity": "आर्द्रता"
+  },
+
+  "aqi": {
+    "title": "वायु गुणस्तर सूचकांक (AQI)",
+    "good": "राम्रो (स्वस्थ)",
+    "moderate": "मध्यम",
+    "unhealthy_sensitive": "संवेदनशील समूहका लागि अस्वस्थ",
+    "unhealthy": "अस्वस्थ",
+    "very_unhealthy": "धेरै अस्वस्थ",
+    "hazardous": "घातक (खतरनाक)",
+    "pm25": "PM2.5 कण"
+  },
+
+  "district": {
+    "province": "प्रदेश",
+    "select_prompt": "विवरण हेर्न कुनै पनि जिल्लामा ट्याप गर्नुहोस्",
+    "close": "बन्द गर्नुहोस्"
+  },
+
+  "places": {
+    "title": "नेपालका प्रसिद्ध ठाउँहरू",
+    "heritage": "सम्पदा",
+    "mountain": "हिमाल",
+    "lake": "ताल",
+    "temple": "मन्दिर",
+    "stupa": "स्तूप",
+    "unesco": "युनेस्को विश्व सम्पदा"
+  },
+
+  "about": {
+    "title": "टेरानेप बारे",
+    "description": "टेरानेप नेपालको पहिलो खुला, मोबाइल-मैत्री र उच्च-गुणस्तरीय ३D भू-दृश्य नक्सा हो। यसले उपग्रह तस्विर, वास्तविक ३D उचाइ र प्रत्यक्ष डाटालाई एउटै ठाउँमा देखाउँछ।",
+    "data_sources": "डाटा स्रोतहरू:",
+    "attribution_aws": "Terrain DEM: AWS Elevation Tiles (Terrarium encoding)",
+    "attribution_eox": "Satellite Imagery: Sentinel-2 cloudless by EOX IT Services GmbH",
+    "attribution_usgs": "Earthquakes: USGS Earthquake Hazards Program API",
+    "attribution_meteo": "Weather & Air Quality: Open-Meteo Public API",
+    "attribution_districts": "Districts: Nepal Survey Dept / geoBoundaries",
+    "offline_ready": "PWA सक्षम: एक पटक खोलेपछि नक्सा छिटो र इन्टरनेट नहुँदा पनि मुख्य भाग खुल्छ।",
+    "close": "ठीक छ"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "brand": "TerraNep",
+  "brand_en": "TerraNep",
+  "tagline": "Realistic 3D Living Terrain & Live Data Map of Nepal",
+  "loading": "Loading 3D Map...",
+  "skip_intro": "Skip Intro",
+  
+  "hud": {
+    "nepal_time": "Nepal Time",
+    "altitude": "Altitude",
+    "meters": "m",
+    "live_quakes": "Quakes",
+    "last_updated": "Updated"
+  },
+
+  "layers": {
+    "title": "Layers",
+    "map_style": "Map Style",
+    "satellite": "Satellite (Sentinel-2)",
+    "terrain": "3D Terrain",
+    "dark": "Cinematic Dark",
+    "earthquakes": "Earthquakes (30 Days)",
+    "weather": "Live Weather",
+    "air_quality": "Air Quality (AQI)",
+    "districts": "District Borders",
+    "places": "Heritage & Places"
+  },
+
+  "controls": {
+    "view_3d": "3D View",
+    "view_2d": "2D View",
+    "reset_view": "Reset View",
+    "my_location": "My Location",
+    "fullscreen": "Fullscreen",
+    "fly_tour": "Fly me through Nepal",
+    "exaggeration": "Terrain Exaggeration",
+    "low_power": "Low-power Mode",
+    "quality": "Quality"
+  },
+
+  "quakes": {
+    "title": "Recent Earthquakes",
+    "magnitude": "Magnitude",
+    "depth": "Depth",
+    "time": "Time",
+    "location": "Location",
+    "filter_all": "30 Days",
+    "filter_7d": "7 Days",
+    "filter_24h": "24 Hours",
+    "no_quakes": "No recent earthquakes found in this timeframe."
+  },
+
+  "weather": {
+    "title": "Live Weather",
+    "temperature": "Temperature",
+    "condition": "Condition",
+    "wind": "Wind",
+    "humidity": "Humidity"
+  },
+
+  "aqi": {
+    "title": "Air Quality Index (AQI)",
+    "good": "Good (Healthy)",
+    "moderate": "Moderate",
+    "unhealthy_sensitive": "Unhealthy for Sensitive Groups",
+    "unhealthy": "Unhealthy",
+    "very_unhealthy": "Very Unhealthy",
+    "hazardous": "Hazardous",
+    "pm25": "PM2.5"
+  },
+
+  "district": {
+    "province": "Province",
+    "select_prompt": "Tap any district to view live regional info",
+    "close": "Close"
+  },
+
+  "places": {
+    "title": "Iconic Places of Nepal",
+    "heritage": "Heritage",
+    "mountain": "Mountain",
+    "lake": "Lake",
+    "temple": "Temple",
+    "stupa": "Stupa",
+    "unesco": "UNESCO World Heritage"
+  },
+
+  "about": {
+    "title": "About TerraNep",
+    "description": "TerraNep is a free, mobile-first, high-definition 3D terrain map of Nepal combining real satellite imagery, AWS Terrarium elevation models, and real-time live environmental data.",
+    "data_sources": "Data Sources & Licenses:",
+    "attribution_aws": "Terrain DEM: AWS Open Data Terrain Tiles (Terrarium encoding)",
+    "attribution_eox": "Satellite Imagery: Sentinel-2 cloudless by EOX IT Services GmbH (CC BY 4.0)",
+    "attribution_usgs": "Earthquakes: USGS Earthquake Hazards Program API",
+    "attribution_meteo": "Weather & Air Quality: Open-Meteo Public API",
+    "attribution_districts": "Districts: Nepal Survey Dept / geoBoundaries (Open Data)",
+    "offline_ready": "PWA Enabled: Installs on phone home-screens and caches map tiles for rapid launch.",
+    "close": "Got it"
+  }
+}
